@@ -30,14 +30,13 @@ class Scraper
     social.each do |site|
       if site.attribute("href").value.include?("twitter")
         profile[:twitter] = site.attribute("href").value
-      if site.attribute("href").value.include?("linkedin")
+      elsif site.attribute("href").value.include?("linkedin")
         profile[:linkedin] = site.attribute("href").value  
-      if site.attribute("href").value.include?("twitter")
+      elsif site.attribute("href").value.include?("github")
         profile[:github] = site.attribute("href").value
       else
         profile[:blog] = site.attribute("href").value
       end
-
     end
 
     profile[:profile_quote] = doc.css("div.profile-quote").text
